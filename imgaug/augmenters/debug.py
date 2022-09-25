@@ -774,7 +774,7 @@ def _generate_cbasois_description(cbasois, images):
         cba.area if hasattr(cba, "area") else -1
         for cbasoi in cbasois
         for cba in cbasoi.items]
-    areas = areas if len(cbasois) > 0 else [-1]
+    areas = areas if len(areas) > 0 else [-1]
     areas_str = (
         "smallest area: %7.4f\n"
         "largest area: %7.4f"
