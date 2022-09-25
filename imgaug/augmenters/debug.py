@@ -812,13 +812,16 @@ def _generate_cbasois_description(cbasois, images):
                       in sorted(dists, key=lambda t: t[1])]
 
     nb_ooi = sum(coords_ooi)
-    ooi_str = (
-        "coords out of image: %d (%6.2f%%)\n"
-        "most extreme coord: (%5.1f, %5.1f)"
-        # TODO "items anyhow out of image: %d (%.2f%%)\n"
-        # TODO "items fully out of image: %d (%.2f%%)\n"
-    ) % (nb_ooi, nb_ooi / len(coords_ooi) * 100,
-         coords_extreme[-1][0], coords_extreme[-1][1])
+    if len(coords_ooi) > 0:
+        ooi_str = (
+            "coords out of image: %d (%6.2f%%)\n"
+            "most extreme coord: (%5.1f, %5.1f)"
+            # TODO "items anyhow out of image: %d (%.2f%%)\n"
+            # TODO "items fully out of image: %d (%.2f%%)\n"
+        ) % (nb_ooi, nb_ooi / len(coords_ooi) * 100,
+             coords_extreme[-1][0], coords_extreme[-1][1])
+    else:
+        ooi_str = "no coords out of image"
 
     on_shapes_str = _generate_on_image_shapes_descr(cbasois)
 
